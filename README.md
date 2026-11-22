@@ -2,7 +2,7 @@
 
 BlazeDisenchant adds disenchant estimates to item tooltips in **World of Warcraft: Forever**.
 
-- See possible materials, quantity ranges and approximate chances, with material icons and quality colors.
+- See possible materials, quantity ranges and approximate chances.
 - With **Goldwright**, see material value ranges and an estimated average value weighted by the outcome chances.
 - Without Goldwright, materials, quantities and chances remain visible. No configuration is needed.
 
