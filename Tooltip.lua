@@ -134,7 +134,7 @@ local function enhance(tooltip, data, explicitRef)
         tooltip:AddDoubleLine(labels[i], right, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85)
         entries[i] = {line = tooltip:NumLines(), chance = "|cffd9d9d9" .. right .. "|r", price = value}
     end
-    alignColumns(tooltip, entries)
+    if next(prices) then alignColumns(tooltip, entries) end
     if average then
         tooltip:AddDoubleLine("Estimated avg. value", ns.Money(average), 0.56, 0.78, 1, 1, 1, 1)
         tooltip:AddLine(" ")
