@@ -9,3 +9,5 @@ BlazeDisenchant adds disenchant estimates to item tooltips in **World of Warcraf
 Results are estimates. Special Forever estimates are marked **Unverified**. Average values use quantity-range midpoints and exclude auction fees.
 
 ![BlazeDisenchant tooltip showing possible materials, chances and Goldwright values](images/tooltip.png)
+
+Disenchant tables adapted from [Disenchantry](https://www.curseforge.com/wow/addons/disenchantry), licensed under the MIT License. See [LICENSE](LICENSE) and [NOTICE](NOTICE) for attribution.
