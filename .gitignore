@@ -7,6 +7,10 @@
 !/CHANGELOG.md
 !/LICENSE
 !/NOTICE
+!/README.md
+!/images/
+/images/*
+!/images/tooltip.png
 !/.gitignore
 !/.pkgmeta
 !/.github/
