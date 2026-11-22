@@ -1,0 +1,20 @@
+# Publish only runtime, attribution and release packaging files.
+/*
+!/Data.lua
+!/Prices.lua
+!/Tooltip.lua
+!/BlazeDisenchant.toc
+!/CHANGELOG.md
+!/LICENSE
+!/NOTICE
+!/.gitignore
+!/.pkgmeta
+!/.github/
+/.github/*
+!/.github/workflows/
+!/.github/scripts/
+/.github/workflows/*
+!/.github/workflows/release-addon.yml
+!/.github/workflows/validate-addon.yml
+/.github/scripts/*
+!/.github/scripts/package_addon.py

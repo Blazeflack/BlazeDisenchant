@@ -1,0 +1,14 @@
+package-as: BlazeDisenchant
+enable-nolib-creation: no
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
+ignore:
+  - .github
+  - tests
+  - AGENTS.md
+  - RELEASING.md
+  - DEVELOPMENT.md
+  - api.json

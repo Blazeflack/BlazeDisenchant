@@ -1,0 +1,10 @@
+## Interface: 16001
+## Title: BlazeDisenchant
+## Notes: Disenchant estimates with optional Goldwright prices for WoW Forever.
+## Author: Blazeflack
+## Version: 0.1.0
+## OptionalDeps: Goldwright
+
+Data.lua
+Prices.lua
+Tooltip.lua
