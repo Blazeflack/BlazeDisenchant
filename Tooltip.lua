@@ -157,12 +157,13 @@ local function enhance(tooltip, data, explicitRef)
     end
 end
 
--- Shift toggles details on tooltips that are already open: rebuild them from
+-- The details key toggles details on tooltips that are already open: rebuild them from
 -- their stored tooltip data, which runs enhance again.
 local modifierFrame = CreateFrame("Frame")
 modifierFrame:RegisterEvent("MODIFIER_STATE_CHANGED")
 modifierFrame:SetScript("OnEvent", function(_, _, key)
-    if key ~= "LSHIFT" and key ~= "RSHIFT" then return end
+    if ns.IsSecret(key) or type(key) ~= "string" then return end
+    if not (key:match("SHIFT$") or key:match("CTRL$") or key:match("ALT$")) then return end
     local wanted = ns.ShowDetails()
     for tooltip in pairs(watched) do
         if tooltip:IsShown() and tooltip.blazeDisenchantAdded
