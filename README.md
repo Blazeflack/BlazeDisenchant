@@ -5,6 +5,7 @@ BlazeDisenchant adds disenchant estimates to item tooltips in **World of Warcraf
 - See possible materials, quantity ranges and approximate chances.
 - With [**Goldwright**](https://www.curseforge.com/wow/addons/goldwright), see material value ranges and an estimated average value weighted by the outcome chances.
 - Without Goldwright, materials, quantities and chances remain visible. No configuration is needed.
+- Prefer a shorter tooltip? Turn off **Show material details** in Options → AddOns → BlazeDisenchant (or `/bde`) to list only the materials and the estimated average value. Hold **Shift** to see the details anyway.
 
 Results are estimates. Special Forever estimates are marked **Unverified**. Average values use quantity-range midpoints and exclude auction fees.
 
