@@ -4,7 +4,10 @@
 ## Author: Blazeflack
 ## Version: 0.1.0
 ## OptionalDeps: Goldwright
+## SavedVariables: BlazeDisenchantDB
 
 Data.lua
 Prices.lua
+Options.lua
 Tooltip.lua
+Report.lua

@@ -11,6 +11,7 @@ local function clearColumns(tooltip)
         if row.native then row.native:SetAlpha(1); row.native = nil end
     end
     tooltip.blazeDisenchantAdded = nil
+    tooltip.blazeDisenchantDetails = nil
 end
 
 local function alignColumns(tooltip, entries)
@@ -118,9 +119,24 @@ local function enhance(tooltip, data, explicitRef)
     local prices, average = ns.Values(results)
     tooltip.blazeDisenchantAdded = true
     tooltip:AddLine(" ")
+    tooltip.blazeDisenchantDetails = ns.ShowDetails()
     local title = "|cff8fc7ffDisenchant|r · "
-    title = title .. (unverified and "|cffffbf69Unverified|r" or "|cff8fc7ffApproximate|r")
+    if tooltip.blazeDisenchantDetails then
+        title = title .. (unverified and "|cffffbf69Unverified|r" or "|cff8fc7ffApproximate|r")
+    else
+        title = title .. "|cff8fc7ffSimple|r" .. (unverified and " · |cffffbf69Unverified|r" or "")
+    end
     tooltip:AddLine(title)
+    if not tooltip.blazeDisenchantDetails then
+        for i in ipairs(results) do
+            tooltip:AddLine(labels[i], 0.85, 0.85, 0.85)
+        end
+        if average then
+            tooltip:AddDoubleLine("Estimated avg. value", ns.Money(average), 0.56, 0.78, 1, 1, 1, 1)
+            tooltip:AddLine(" ")
+        end
+        return
+    end
     local entries = {}
     for i, result in ipairs(results) do
         local low, high = result.minQuantity, result.maxQuantity
@@ -140,6 +156,23 @@ local function enhance(tooltip, data, explicitRef)
         tooltip:AddLine(" ")
     end
 end
+
+-- The details key toggles details on tooltips that are already open: rebuild them from
+-- their stored tooltip data, which runs enhance again.
+local modifierFrame = CreateFrame("Frame")
+modifierFrame:RegisterEvent("MODIFIER_STATE_CHANGED")
+modifierFrame:SetScript("OnEvent", function(_, _, key)
+    if ns.IsSecret(key) or type(key) ~= "string" then return end
+    if not (key:match("SHIFT$") or key:match("CTRL$") or key:match("ALT$")) then return end
+    local wanted = ns.ShowDetails()
+    for tooltip in pairs(watched) do
+        if tooltip:IsShown() and tooltip.blazeDisenchantAdded
+            and tooltip.blazeDisenchantDetails ~= wanted
+            and tooltip.RefreshData and tooltip.GetPrimaryTooltipInfo and tooltip:GetPrimaryTooltipInfo() then
+            tooltip:RefreshData()
+        end
+    end
+end)
 
 if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall and Enum and Enum.TooltipDataType then
     TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, enhance)

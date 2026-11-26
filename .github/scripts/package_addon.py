@@ -22,7 +22,7 @@ def package(tag, output_dir):
         raise ValueError(f"Tag version {version} does not match {toc_path.name}")
 
     # Explicit public/package allowlist: local development files never enter ZIPs.
-    files = [f"{addon}.toc", "Data.lua", "Prices.lua", "Tooltip.lua",
+    files = [f"{addon}.toc", "Data.lua", "Prices.lua", "Options.lua", "Tooltip.lua", "Report.lua",
              "CHANGELOG.md", "LICENSE", "NOTICE"]
     for name in files:
         source = root / name
