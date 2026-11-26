@@ -39,6 +39,11 @@ end
 
 function ns.Money(value)
     value = math.floor(value + 0.5)
+    -- Coin icons like the default UI (letters in colorblind mode).
+    if GetMoneyString then
+        local ok, text = pcall(GetMoneyString, value, true)
+        if ok and type(text) == "string" and text ~= "" then return text end
+    end
     local parts = {}
     local quantities = {math.floor(value / 10000), math.floor(value / 100) % 100, value % 100}
     local units = {"|cffffd700g|r", "|cffc7c7cfs|r", "|cffd99559c|r"}
