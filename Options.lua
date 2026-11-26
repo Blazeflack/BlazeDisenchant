@@ -5,6 +5,8 @@ local defaults = {
     showDetails = true,
     -- With details off, holding this key shows them anyway: SHIFT, CTRL, ALT or NONE.
     detailsKey = "SHIFT",
+    -- After each Disenchant, print the materials and their value to chat.
+    reportDisenchant = true,
 }
 
 local KEY_DOWN = {
@@ -53,6 +55,9 @@ local function registerSettings()
         "While material details are off, hold this key over an item to show them.",
         {{"SHIFT", "Shift"}, {"CTRL", "Ctrl"}, {"ALT", "Alt"}, {"NONE", "None"}})
     key:SetParentInitializer(details, function() return not ns.db.showDetails end)
+    checkbox("reportDisenchant", "Report disenchant value in chat",
+        "After each Disenchant, print the materials you received and their total value "
+        .. "(with Goldwright prices) to your chat window, next to the tooltip estimate.")
 
     Settings.RegisterAddOnCategory(category)
     ns.settingsCategory = category
